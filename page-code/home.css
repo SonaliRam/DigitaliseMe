@@ -225,20 +225,30 @@
     opacity 0.4s ease;
 }
 
-.about-card:hover img,
 .about-card.is-active img {
   transform: scale(1.06);
 }
 
-.about-card:hover::after,
 .about-card.is-active::after {
   opacity: 1;
 }
 
-.about-card:hover .about-card__word,
 .about-card.is-active .about-card__word {
   opacity: 1;
   transform: translate(-50%, -50%);
+}
+
+@media (hover: hover) {
+  .about-card:hover img {
+    transform: scale(1.06);
+  }
+  .about-card:hover::after {
+    opacity: 1;
+  }
+  .about-card:hover .about-card__word {
+    opacity: 1;
+    transform: translate(-50%, -50%);
+  }
 }
 
 /* ---------- Services (stacked rows) ---------- */
@@ -256,7 +266,6 @@
 .svc-row {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  align-items: center;
   gap: 40px;
 }
 
@@ -888,6 +897,19 @@
     grid-template-columns: 1fr;
     gap: 32px;
   }
+  .process__content {
+    display: contents;
+  }
+  .process__content h2 {
+    order: 1;
+    margin-bottom: 0;
+  }
+  .process__media {
+    order: 2;
+  }
+  .process__list {
+    order: 3;
+  }
   .process__trigger {
     padding: 18px 0;
     gap: 12px;
@@ -931,11 +953,19 @@
     gap: 32px;
   }
   .why__media {
+    order: 2;
     height: 380px;
     border-radius: var(--radius);
   }
+  .why__content {
+    display: contents;
+  }
   .why__content h2 {
-    margin-bottom: 20px;
+    order: 1;
+    margin-bottom: 0;
+  }
+  .why__list {
+    order: 3;
   }
   .why__item {
     padding: 16px 0;
@@ -998,8 +1028,25 @@
     grid-template-columns: 1fr;
     gap: 24px;
   }
+  .svc {
+    overflow-x: clip;
+  }
   .svc-row__media {
     height: 340px;
+    margin: 0 calc(var(--gutter) * -1);
+  }
+  .svc-row__frame--u,
+  .svc-row__frame--arch {
+    width: 47%;
+  }
+  .svc-row__frame--u {
+    right: 0;
+    border-radius: var(--radius) 0 0 var(--radius);
+  }
+  .svc-row__frame--arch {
+    left: 0;
+    right: auto;
+    border-radius: 0 var(--radius) var(--radius) 0;
   }
   .hero__title {
     margin-top: 48px;
@@ -1044,7 +1091,7 @@
   .about-card:nth-child(2),
   .about-card:nth-child(3) {
     flex: 0 0 82%;
-    height: 440px;
+    height: 340px;
   }
 }
 
@@ -1152,7 +1199,7 @@
 
 @media (max-width: 767px) {
   .sub-banner img {
-    aspect-ratio: 750 / 900;
+    aspect-ratio: 4 / 3;
   }
 }
 
@@ -1213,8 +1260,25 @@
 }
 
 @media (max-width: 767px) {
+  .hero {
+    min-height: auto;
+  }
   .hero__subject {
-    height: 65%;
-    bottom: 140px;
+    position: relative;
+    left: auto;
+    bottom: auto;
+    width: 100%;
+    height: auto;
+    margin-top: -70px;
+    transform: none;
+  }
+  .hero__subject img {
+    width: 170%;
+    height: auto;
+    margin-left: -35%;
+  }
+  .hero__bottom {
+    margin-top: 0;
+    padding-top: 8px;
   }
 }

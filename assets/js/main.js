@@ -93,6 +93,30 @@
 			});
 		});
 
+		gsap.utils.toArray('[data-zoom-out]').forEach(function (el) {
+			var img = el.querySelector('img');
+			if (!img) {
+				return;
+			}
+			gsap.set(el, { overflow: 'hidden' });
+			gsap.from(img, {
+				scale: 1.1,
+				duration: 1.6,
+				ease: 'power2.out',
+				scrollTrigger: { trigger: el, start: 'top 85%', once: true }
+			});
+		});
+
+		gsap.utils.toArray('[data-slide-right]').forEach(function (el) {
+			gsap.from(el, {
+				x: 80,
+				autoAlpha: 0,
+				duration: 1,
+				ease: 'power3.out',
+				scrollTrigger: { trigger: el, start: 'top 85%', once: true }
+			});
+		});
+
 		gsap.utils.toArray('[data-stagger]').forEach(function (group) {
 			gsap.from(group.children, {
 				y: 24,
@@ -278,17 +302,12 @@
 			});
 		}
 
-		var slider = createAutoSlider(track, document.querySelector('[data-about-dots]'), function (i) {
-			setActive(cards[i] || null);
+		createAutoSlider(track, document.querySelector('[data-about-dots]'), function () {
+			setActive(null);
 		});
 
-		cards.forEach(function (card, i) {
+		cards.forEach(function (card) {
 			card.addEventListener('click', function () {
-				if (slider.isMobile()) {
-					slider.goTo(i);
-					slider.start();
-					return;
-				}
 				setActive(card.classList.contains('is-active') ? null : card);
 			});
 		});
@@ -323,9 +342,14 @@
 			ease: 'power3.out',
 			scrollTrigger: { trigger: '.about', start: 'top 80%', once: true }
 		});
-		gsap.timeline({ scrollTrigger: { trigger: '[data-about-track]', start: 'top 85%', once: true } })
-			.from('.about-card', { y: 80, autoAlpha: 0, duration: 1, stagger: 0.15, ease: 'power3.out' })
-			.from('.about-card__word', { y: 24, autoAlpha: 0, duration: 0.6, stagger: 0.15, ease: 'power3.out' }, '-=0.4');
+		gsap.from('.about-card', {
+			y: 80,
+			autoAlpha: 0,
+			duration: 1,
+			stagger: 0.15,
+			ease: 'power3.out',
+			scrollTrigger: { trigger: '[data-about-track]', start: 'top 85%', once: true }
+		});
 	}
 
 	function initServices() {
@@ -339,8 +363,8 @@
 					scrollTrigger: { trigger: row, start: 'top 90%', end: 'top 40%', scrub: 0.8 }
 				})
 					.from(row.querySelector('[data-svc-text]'), { x: -60, autoAlpha: 0 }, 0)
-					.from(row.querySelector('.svc-row__frame--u'), { xPercent: -110, autoAlpha: 0 }, 0.1)
-					.from(row.querySelector('.svc-row__frame--arch'), { xPercent: 110, autoAlpha: 0 }, 0.1);
+					.from(row.querySelector('.svc-row__frame--u'), { xPercent: 110, autoAlpha: 0 }, 0.1)
+					.from(row.querySelector('.svc-row__frame--arch'), { xPercent: -110, autoAlpha: 0 }, 0.1);
 			});
 		});
 
