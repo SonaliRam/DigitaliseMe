@@ -25,18 +25,18 @@ $dm_industries = array( 'D2C Brands', 'E-commerce', 'Real Estate', 'Healthcare',
 				</ul>
 			</div>
 
-			<div>
-				<h6><?php esc_html_e( 'Services', 'digitaliseme' ); ?></h6>
+			<div class="footer__col" data-footer-acc>
+				<h6><button class="footer__toggle" type="button" aria-expanded="false"><?php esc_html_e( 'Services', 'digitaliseme' ); ?></button></h6>
 				<?php dm_menu( 'footer-services', 'footer__list' ); ?>
 			</div>
 
-			<div>
-				<h6><?php esc_html_e( 'Company', 'digitaliseme' ); ?></h6>
+			<div class="footer__col" data-footer-acc>
+				<h6><button class="footer__toggle" type="button" aria-expanded="false"><?php esc_html_e( 'Company', 'digitaliseme' ); ?></button></h6>
 				<?php dm_menu( 'footer-company', 'footer__list' ); ?>
 			</div>
 
-			<div>
-				<h6><?php esc_html_e( 'Industries', 'digitaliseme' ); ?></h6>
+			<div class="footer__col" data-footer-acc>
+				<h6><button class="footer__toggle" type="button" aria-expanded="false"><?php esc_html_e( 'Industries', 'digitaliseme' ); ?></button></h6>
 				<ul class="footer__list">
 					<?php foreach ( $dm_industries as $dm_industry ) : ?>
 						<li><?php echo esc_html( $dm_industry ); ?></li>

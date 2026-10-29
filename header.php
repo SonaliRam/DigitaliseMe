@@ -38,10 +38,10 @@ if ( ! defined( 'ABSPATH' ) ) {
 			<span></span><span></span>
 		</button>
 	</div>
-
-	<nav class="mobile-menu" id="mobile-menu" aria-label="<?php esc_attr_e( 'Mobile', 'digitaliseme' ); ?>">
-		<?php dm_menu( 'header-left', 'mobile-menu__list' ); ?>
-		<?php dm_menu( 'header-right', 'mobile-menu__list' ); ?>
-		<a class="primary-btn" href="<?php echo esc_url( dm_contact_url() ); ?>"><?php esc_html_e( 'Get in Touch', 'digitaliseme' ); ?></a>
-	</nav>
 </header>
+
+<nav class="mobile-menu" id="mobile-menu" aria-label="<?php esc_attr_e( 'Mobile', 'digitaliseme' ); ?>">
+	<?php dm_menu( 'header-left', 'mobile-menu__list' ); ?>
+	<?php dm_menu( 'header-right', 'mobile-menu__list' ); ?>
+	<a class="primary-btn" href="<?php echo esc_url( dm_contact_url() ); ?>"><?php esc_html_e( 'Get in Touch', 'digitaliseme' ); ?></a>
+</nav>
