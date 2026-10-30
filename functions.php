@@ -55,10 +55,16 @@ function dm_enqueue_assets() {
 		array( 'in_footer' => true, 'strategy' => 'defer' )
 	);
 
+	$dm_post = get_post();
+	if ( is_singular() && $dm_post && false !== strpos( $dm_post->post_content, 'awSwiper' ) ) {
+		wp_enqueue_style( 'swiper', $uri . '/assets/css/vendor/swiper-bundle.min.css', array(), '14.0.1' );
+		wp_enqueue_script( 'swiper', $uri . '/assets/js/vendor/swiper-bundle.min.js', array(), '14.0.1', array( 'in_footer' => true, 'strategy' => 'defer' ) );
+	}
+
 	wp_enqueue_script(
 		'dm-main',
 		$uri . '/assets/js/main.js',
-		array( 'gsap', 'gsap-scrolltrigger' ),
+		wp_script_is( 'swiper', 'enqueued' ) ? array( 'gsap', 'gsap-scrolltrigger', 'swiper' ) : array( 'gsap', 'gsap-scrolltrigger' ),
 		filemtime( $path . '/assets/js/main.js' ),
 		array( 'in_footer' => true, 'strategy' => 'defer' )
 	);
