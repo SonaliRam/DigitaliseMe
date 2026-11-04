@@ -39,6 +39,15 @@ function dm_enqueue_assets() {
 		filemtime( $path . '/assets/css/layout.css' )
 	);
 
+	if ( is_404() ) {
+		wp_enqueue_style(
+			'dm-404',
+			$uri . '/assets/css/404.css',
+			array( 'dm-layout' ),
+			filemtime( $path . '/assets/css/404.css' )
+		);
+	}
+
 	wp_enqueue_script(
 		'gsap',
 		$uri . '/assets/js/vendor/gsap.min.js',
@@ -56,7 +65,7 @@ function dm_enqueue_assets() {
 	);
 
 	$dm_post = get_post();
-	if ( is_singular() && $dm_post && false !== strpos( $dm_post->post_content, 'awSwiper' ) ) {
+	if ( is_singular() && $dm_post && ( false !== strpos( $dm_post->post_content, 'awSwiper' ) || false !== strpos( $dm_post->post_content, 'svSwiper' ) || false !== strpos( $dm_post->post_content, 'wkSocialSwiper' ) ) ) {
 		wp_enqueue_style( 'swiper', $uri . '/assets/css/vendor/swiper-bundle.min.css', array(), '14.0.1' );
 		wp_enqueue_script( 'swiper', $uri . '/assets/js/vendor/swiper-bundle.min.js', array(), '14.0.1', array( 'in_footer' => true, 'strategy' => 'defer' ) );
 	}
