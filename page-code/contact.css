@@ -1363,3 +1363,29 @@
     margin-bottom: 24px;
   }
 }
+
+/* ---------- Contact hero: smaller floating icons ---------- */
+.ch-icon { width: 64px; height: 64px; border-radius: 18px; }
+.ch-icon svg { width: 30px; height: 30px; }
+.ch-icon--lg { width: 84px; height: 84px; border-radius: 22px; }
+.ch-icon--lg svg { width: 40px; height: 40px; }
+.ch-icon--sm { width: 48px; height: 48px; border-radius: 14px; }
+.ch-icon--sm svg { width: 22px; height: 22px; }
+
+@media (max-width: 1024px) {
+  .ch-icon { width: 54px; height: 54px; border-radius: 15px; }
+  .ch-icon svg { width: 26px; height: 26px; }
+  .ch-icon--lg { width: 68px; height: 68px; border-radius: 18px; }
+  .ch-icon--lg svg { width: 32px; height: 32px; }
+  .ch-icon--sm { width: 42px; height: 42px; border-radius: 12px; }
+  .ch-icon--sm svg { width: 20px; height: 20px; }
+}
+
+@media (max-width: 767px) {
+  .ch-icon { width: 42px; height: 42px; border-radius: 12px; }
+  .ch-icon svg { width: 20px; height: 20px; }
+  .ch-icon--lg { width: 52px; height: 52px; border-radius: 14px; }
+  .ch-icon--lg svg { width: 26px; height: 26px; }
+  .ch-icon--sm { width: 34px; height: 34px; border-radius: 10px; }
+  .ch-icon--sm svg { width: 16px; height: 16px; }
+}

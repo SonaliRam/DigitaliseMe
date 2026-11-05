@@ -283,15 +283,18 @@
 }
 
 .footer__logo {
-  width: 200px;
-  height: 60px;
-  object-fit: contain;
-  border-radius: 6px;
+  display: block;
+  width: 170px;
+  height: auto;
 }
 
-.footer__tagline {
+.footer__address {
   max-width: 320px;
-  margin-bottom: 24px;
+  margin: 0 0 24px;
+  font-family: var(--font-body);
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.6;
 }
 
 .footer__social {
@@ -316,8 +319,11 @@
     background-color var(--transition);
 }
 
-.footer__social a:hover {
-  background: rgba(255, 255, 255, 0.2);
+.footer__social a:hover,
+.footer__social a:focus-visible {
+  color: var(--color-white);
+  background: var(--color-orange);
+  border-color: var(--color-orange);
 }
 
 .footer__list {
@@ -346,17 +352,6 @@
   margin: 0;
   padding: 0;
   list-style: none;
-}
-
-.footer__wordmark-wrap {
-  position: relative;
-  margin-top: 40px;
-}
-
-.footer__wordmark {
-  width: 100%;
-  height: auto;
-  border-radius: var(--radius);
 }
 
 /* ---------- Tablet ---------- */
@@ -514,10 +509,14 @@
     margin-top: 5px;
     border-top: 0;
   }
-  .footer__wordmark-wrap {
-    margin-top: 28px;
-  }
+  
   .footer__legal {
     flex-direction: column;
+  }
+}
+
+@media (max-width: 767px) {
+  .footer__logo {
+    width: 150px;
   }
 }

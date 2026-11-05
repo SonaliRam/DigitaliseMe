@@ -10,10 +10,9 @@ $dm_industries = array( 'D2C Brands', 'E-commerce', 'Real Estate', 'Healthcare',
 		<div class="footer__top" data-footer-cols>
 			<div class="footer__brand">
 				<a class="footer__logo-link" href="<?php echo esc_url( home_url( '/' ) ); ?>">
-					<img class="footer__logo" src="<?php echo esc_url( dm_image_url( 'dm_logo_footer', 'logo-footer.svg' ) ); ?>" width="200" height="60" alt="<?php echo esc_attr( get_bloginfo( 'name' ) ); ?>" loading="lazy">
-					<?php dm_img_label( 'dm_logo_footer', 'Logo', 240, 72, 'img-label--center' ); ?>
+					<img class="footer__logo" src="<?php echo esc_url( home_url( '/wp-content/uploads/2026/11/dm-wordmark-white.gif' ) ); ?>" width="760" height="350" alt="<?php echo esc_attr( get_bloginfo( 'name' ) ); ?>" decoding="async">
 				</a>
-				<h4 class="footer__tagline"><?php echo esc_html( get_theme_mod( 'dm_footer_tagline', __( 'Marketing Tied to Revenue, Not Just Reach.', 'digitaliseme' ) ) ); ?></h4>
+				<p class="footer__address">C - 20, G Block Rd, G Block BKC, Bandra Kurla Complex, Bandra East, Mumbai, Maharashtra 400051</p>
 				<ul class="footer__social">
 					<?php foreach ( dm_social_networks() as $dm_id => $dm_network ) : ?>
 						<li>
