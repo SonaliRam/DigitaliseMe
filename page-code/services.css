@@ -511,9 +511,9 @@ body:has(.sh) .site-header.is-scrolled {
 /* Platforms: plain logos only (no box, border or background) */
 .platforms__logos .platforms__logo,
 .platforms__logos .platforms__logo:hover {
-  flex: 0 0 56px;
-  width: 56px;
-  height: 56px;
+  flex: 0 0 35px;
+  width: 35px;
+  height: 35px;
   padding: 0;
   background: none;
   border: 0;
