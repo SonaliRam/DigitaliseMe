@@ -17,8 +17,19 @@
 			return toggle && toggle.getAttribute('aria-expanded') === 'true';
 		}
 
+		var lastY = window.scrollY;
+
 		function updateHeader() {
-			header.classList.toggle('is-scrolled', isMenuOpen() || window.scrollY > 10);
+			var y = window.scrollY;
+			header.classList.toggle('is-scrolled', isMenuOpen() || y > 10);
+			if (isMenuOpen() || y < 120 || y < lastY - 4) {
+				header.classList.remove('is-hidden');
+			} else if (y > lastY + 4) {
+				header.classList.add('is-hidden');
+			}
+			if (Math.abs(y - lastY) > 4) {
+				lastY = y;
+			}
 		}
 
 		function setMenu(open) {
@@ -51,11 +62,7 @@
 			});
 		}
 
-		if (ScrollTrigger) {
-			ScrollTrigger.create({ start: 10, end: 'max', onToggle: updateHeader });
-		} else {
-			window.addEventListener('scroll', updateHeader, { passive: true });
-		}
+		window.addEventListener('scroll', updateHeader, { passive: true });
 		updateHeader();
 	}
 

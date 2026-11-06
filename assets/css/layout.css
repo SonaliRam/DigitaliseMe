@@ -49,7 +49,12 @@
     border-color var(--transition),
     box-shadow var(--transition),
     -webkit-backdrop-filter var(--transition),
-    backdrop-filter var(--transition);
+    backdrop-filter var(--transition),
+    translate 0.35s ease;
+}
+
+.site-header.is-hidden {
+  translate: 0 -130%;
 }
 
 .admin-bar .site-header {
