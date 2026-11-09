@@ -286,6 +286,12 @@
   outline: 2px solid var(--orange);
   outline-offset: 3px;
 }
+.wk-case.is-collapsed {
+  display: none;
+}
+.wk-cases__more [hidden] {
+  display: none;
+}
 .wk-cases__grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);

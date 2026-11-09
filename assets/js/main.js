@@ -66,6 +66,41 @@
 		updateHeader();
 	}
 
+	function initHeroCombo() {
+		var combos = document.querySelectorAll('[data-hero-combo]');
+		if (!combos.length) {
+			return;
+		}
+		if (!gsap || reduceMotion) {
+			combos.forEach(function (c) {
+				c.classList.add('is-static');
+			});
+			return;
+		}
+		var blocks = [];
+		var outlines = [];
+		var fills = [];
+		var words = [];
+		combos.forEach(function (c) {
+			blocks.push(c.querySelector('.hero__combo-block'));
+			outlines.push(c.querySelector('.hero__combo-outline'));
+			fills.push(c.querySelector('.hero__combo-fill'));
+			words.push(c.querySelectorAll('.hero__combo-outline .hero__word'));
+		});
+		words.forEach(function (w) {
+			gsap.set(w, { yPercent: 110 });
+		});
+		var tl = gsap.timeline({ delay: 0.3 });
+		tl.to(blocks, { scaleX: 1, duration: 0.7, ease: 'power3.inOut' })
+			.set(outlines, { visibility: 'visible' })
+			.set(blocks, { transformOrigin: 'right center' })
+			.to(blocks, { scaleX: 0, duration: 0.7, ease: 'power3.inOut' }, 'out');
+		words.forEach(function (w) {
+			tl.to(w, { yPercent: 0, duration: 0.8, ease: 'power3.out', stagger: 0.22 }, 'out+=0.25');
+		});
+		tl.to(fills, { clipPath: 'inset(0 0% 0 0)', duration: 0.35, ease: 'power2.out' }, '>-0.1');
+	}
+
 	function initHero() {
 		if (!document.querySelector('.hero')) {
 			return;
@@ -1208,26 +1243,82 @@
 
 		var filters = page.querySelectorAll('[data-filter]');
 		var cases = page.querySelectorAll('[data-cases] .wk-case');
+		var grid = page.querySelector('[data-cases]');
+		var moreBtn = page.querySelector('[data-cases-more]');
+		var current = 'all';
+		var rowsShown = 2;
+
+		function columns() {
+			if (!grid) {
+				return 1;
+			}
+			var cols = getComputedStyle(grid).gridTemplateColumns.split(' ').filter(function (v) {
+				return v.trim() !== '';
+			}).length;
+			return cols || 1;
+		}
+
+		function renderCases(newFrom) {
+			var limit = rowsShown * columns();
+			var matched = 0;
+			var fresh = [];
+			cases.forEach(function (c) {
+				var on = current === 'all' || c.getAttribute('data-cat') === current;
+				c.classList.toggle('is-hidden', !on);
+				if (on) {
+					matched++;
+					var visible = matched <= limit;
+					c.classList.toggle('is-collapsed', !visible);
+					if (visible && matched > newFrom) {
+						fresh.push(c);
+					}
+				} else {
+					c.classList.remove('is-collapsed');
+				}
+			});
+			if (moreBtn) {
+				moreBtn.hidden = matched <= limit;
+			}
+			return fresh;
+		}
+
+		function showCases(list) {
+			if (animate && list.length) {
+				gsap.fromTo(list, { y: 30, autoAlpha: 0, scale: 0.96 }, { y: 0, autoAlpha: 1, scale: 1, duration: 0.6, stagger: 0.08, ease: 'power3.out' });
+			}
+		}
+
+		renderCases(Infinity);
+
 		filters.forEach(function (btn) {
 			btn.setAttribute('aria-pressed', btn.classList.contains('is-active') ? 'true' : 'false');
 			btn.addEventListener('click', function () {
-				var f = btn.getAttribute('data-filter');
-				var show = [];
+				current = btn.getAttribute('data-filter');
+				rowsShown = 2;
 				filters.forEach(function (b) {
 					b.classList.toggle('is-active', b === btn);
 					b.setAttribute('aria-pressed', b === btn ? 'true' : 'false');
 				});
-				cases.forEach(function (c) {
-					var on = f === 'all' || c.getAttribute('data-cat') === f;
-					c.classList.toggle('is-hidden', !on);
-					if (on) {
-						show.push(c);
-					}
-				});
-				if (animate) {
-					gsap.fromTo(show, { y: 30, autoAlpha: 0, scale: 0.96 }, { y: 0, autoAlpha: 1, scale: 1, duration: 0.6, stagger: 0.08, ease: 'power3.out' });
-				}
+				showCases(renderCases(0));
 			});
+		});
+
+		if (moreBtn) {
+			moreBtn.addEventListener('click', function (e) {
+				e.preventDefault();
+				var before = rowsShown * columns();
+				rowsShown += 2;
+				showCases(renderCases(before));
+			});
+		}
+
+		var lastCols = columns();
+		window.addEventListener('resize', function () {
+			var cols = columns();
+			if (cols !== lastCols) {
+				lastCols = cols;
+				renderCases(Infinity);
+			}
 		});
 
 		if (!animate) {
@@ -1491,6 +1582,7 @@
 		}
 
 		initHeader();
+		initHeroCombo();
 		initGridWarp();
 		initAbout();
 		initPlatforms();
