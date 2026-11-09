@@ -29,62 +29,6 @@
   inset: 0;
   background: rgba(0, 0, 0, 0.45);
 }
-.ah__waves {
-  position: absolute;
-  inset: 0;
-  z-index: -2;
-  width: 100%;
-  height: 100%;
-}
-.ah__path {
-  fill: none;
-  stroke: url(#ah-grad);
-  stroke-width: 6;
-  stroke-linecap: round;
-  stroke-dasharray: 2200;
-  stroke-dashoffset: 2200;
-  animation: ah-draw 2.4s cubic-bezier(0.65, 0, 0.35, 1) forwards;
-}
-.ah__path--glow {
-  stroke-width: 22;
-  opacity: 0.55;
-}
-.ah__path--thin {
-  stroke-width: 3;
-  opacity: 0.85;
-}
-.ah__path--soft {
-  stroke-width: 18;
-  opacity: 0.25;
-}
-.ah__ribbon {
-  transform-box: fill-box;
-  transform-origin: center;
-}
-.ah__ribbon--a {
-  animation: ah-sway-a 12s ease-in-out 2.4s infinite alternate;
-}
-.ah__ribbon--b {
-  animation: ah-sway-b 14s ease-in-out 2.4s infinite alternate;
-}
-.ah__ribbon--c {
-  animation: ah-sway-c 16s ease-in-out 2.4s infinite alternate;
-}
-@keyframes ah-draw {
-  to { stroke-dashoffset: 0; }
-}
-@keyframes ah-sway-a {
-  from { transform: translate(0, 0) rotate(0deg); }
-  to { transform: translate(-40px, 30px) rotate(-2deg); }
-}
-@keyframes ah-sway-b {
-  from { transform: translate(0, 0) rotate(0deg); }
-  to { transform: translate(50px, 40px) rotate(2deg); }
-}
-@keyframes ah-sway-c {
-  from { transform: translate(0, 0); }
-  to { transform: translate(-60px, -30px); }
-}
 .ah__grain {
   position: absolute;
   inset: 0;
@@ -107,11 +51,11 @@
   line-height: 1.15;
   letter-spacing: -0.02em;
   white-space: nowrap;
-  color: var(--color-blue);
+  color: #FFFFFF;
 }
 .ah__title em {
   font-style: italic;
-  color: var(--color-orange);
+  color: #FFFFFF;
 }
 .ah__title > span {
   display: inline-block;

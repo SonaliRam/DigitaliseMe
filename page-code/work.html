@@ -2,9 +2,7 @@
 <div class="wk">
   <!-- ===== 1. HERO ===== -->
   <section class="wk-hero" aria-labelledby="hero-title">
-    <div class="wk-hero__grid" aria-hidden="true"></div>
-    <span class="wk-hero__blob wk-hero__blob--a" aria-hidden="true"></span>
-    <span class="wk-hero__blob wk-hero__blob--b" aria-hidden="true"></span>
+    <canvas class="wk-hero__canvas" aria-hidden="true" data-grid-warp></canvas>
     <div class="page-width-medium wk-hero__inner">
       <p class="eyebrow" data-fade>Our Work</p>
       <h1 class="wk-hero__title" id="hero-title">
@@ -28,6 +26,7 @@
       <li class="brand-strip__item"><img src="/wp-content/uploads/2026/10/logos_1.webp" width="400" height="200" alt="Brand 1 logo" loading="lazy" /></li>
       <li class="brand-strip__item"><img src="/wp-content/uploads/2026/10/logos_2.webp" width="400" height="200" alt="Brand 2 logo" loading="lazy" /></li>
       <li class="brand-strip__item"><img src="/wp-content/uploads/2026/10/logos_3.webp" width="400" height="200" alt="Brand 3 logo" loading="lazy" /></li>
+      <li class="brand-strip__item"><img src="/wp-content/uploads/2026/11/bulbul-1.webp" width="400" height="200" alt="Bulbul logo" loading="lazy" /></li>
       <li class="brand-strip__item"><img src="/wp-content/uploads/2026/10/logos_4.webp" width="400" height="200" alt="Brand 4 logo" loading="lazy" /></li>
       <li class="brand-strip__item"><img src="/wp-content/uploads/2026/10/logos_5.webp" width="400" height="200" alt="Brand 5 logo" loading="lazy" /></li>
       <li class="brand-strip__item"><img src="/wp-content/uploads/2026/10/logos_6.webp" width="400" height="200" alt="Brand 6 logo" loading="lazy" /></li>
@@ -41,6 +40,15 @@
       <li class="brand-strip__item"><img src="/wp-content/uploads/2026/10/logos_14.webp" width="400" height="200" alt="Brand 14 logo" loading="lazy" /></li>
       <li class="brand-strip__item"><img src="/wp-content/uploads/2026/10/logos_15.webp" width="400" height="200" alt="Brand 15 logo" loading="lazy" /></li>
       <li class="brand-strip__item"><img src="/wp-content/uploads/2026/10/amvibrandlogo-scaled.png" width="400" height="200" alt="AMVI logo" loading="lazy" /></li>
+      <li class="brand-strip__item"><img src="/wp-content/uploads/2026/11/aegonlife.webp" width="400" height="200" alt="Aegon Life logo" loading="lazy" /></li>
+      <li class="brand-strip__item"><img src="/wp-content/uploads/2026/11/botanicals.webp" width="400" height="200" alt="Botanicals logo" loading="lazy" /></li>
+      <li class="brand-strip__item"><img src="/wp-content/uploads/2026/11/fg.webp" width="400" height="200" alt="FG logo" loading="lazy" /></li>
+      <li class="brand-strip__item"><img src="/wp-content/uploads/2026/11/jewelsbyjo.webp" width="400" height="200" alt="Jewels by Jo logo" loading="lazy" /></li>
+      <li class="brand-strip__item"><img src="/wp-content/uploads/2026/11/likes_global.webp" width="400" height="200" alt="Likes Global logo" loading="lazy" /></li>
+      <li class="brand-strip__item"><img src="/wp-content/uploads/2026/11/mavonic.webp" width="400" height="200" alt="Mavonic logo" loading="lazy" /></li>
+      <li class="brand-strip__item"><img src="/wp-content/uploads/2026/11/nic_supersrore.webp" width="400" height="200" alt="NIC Superstore logo" loading="lazy" /></li>
+      <li class="brand-strip__item"><img src="/wp-content/uploads/2026/11/novotel.webp" width="400" height="200" alt="Novotel logo" loading="lazy" /></li>
+      <li class="brand-strip__item"><img src="/wp-content/uploads/2026/11/z_learn.webp" width="400" height="200" alt="Z Learn logo" loading="lazy" /></li>
       <li class="brand-strip__item" aria-hidden="true"><img src="/wp-content/uploads/2026/10/logos_1.webp" width="400" height="200" alt="" loading="lazy" /></li>
       <li class="brand-strip__item" aria-hidden="true"><img src="/wp-content/uploads/2026/10/logos_2.webp" width="400" height="200" alt="" loading="lazy" /></li>
       <li class="brand-strip__item" aria-hidden="true"><img src="/wp-content/uploads/2026/10/logos_3.webp" width="400" height="200" alt="" loading="lazy" /></li>
@@ -57,6 +65,15 @@
       <li class="brand-strip__item" aria-hidden="true"><img src="/wp-content/uploads/2026/10/logos_14.webp" width="400" height="200" alt="" loading="lazy" /></li>
       <li class="brand-strip__item" aria-hidden="true"><img src="/wp-content/uploads/2026/10/logos_15.webp" width="400" height="200" alt="" loading="lazy" /></li>
       <li class="brand-strip__item" aria-hidden="true"><img src="/wp-content/uploads/2026/10/amvibrandlogo-scaled.png" width="400" height="200" alt="" loading="lazy" /></li>
+      <li class="brand-strip__item" aria-hidden="true"><img src="/wp-content/uploads/2026/11/aegonlife.webp" width="400" height="200" alt="" loading="lazy" /></li>
+      <li class="brand-strip__item" aria-hidden="true"><img src="/wp-content/uploads/2026/11/botanicals.webp" width="400" height="200" alt="" loading="lazy" /></li>
+      <li class="brand-strip__item" aria-hidden="true"><img src="/wp-content/uploads/2026/11/fg.webp" width="400" height="200" alt="" loading="lazy" /></li>
+      <li class="brand-strip__item" aria-hidden="true"><img src="/wp-content/uploads/2026/11/jewelsbyjo.webp" width="400" height="200" alt="" loading="lazy" /></li>
+      <li class="brand-strip__item" aria-hidden="true"><img src="/wp-content/uploads/2026/11/likes_global.webp" width="400" height="200" alt="" loading="lazy" /></li>
+      <li class="brand-strip__item" aria-hidden="true"><img src="/wp-content/uploads/2026/11/mavonic.webp" width="400" height="200" alt="" loading="lazy" /></li>
+      <li class="brand-strip__item" aria-hidden="true"><img src="/wp-content/uploads/2026/11/nic_supersrore.webp" width="400" height="200" alt="" loading="lazy" /></li>
+      <li class="brand-strip__item" aria-hidden="true"><img src="/wp-content/uploads/2026/11/novotel.webp" width="400" height="200" alt="" loading="lazy" /></li>
+      <li class="brand-strip__item" aria-hidden="true"><img src="/wp-content/uploads/2026/11/z_learn.webp" width="400" height="200" alt="" loading="lazy" /></li>
     </ul>
     </div>
   </div>
@@ -224,74 +241,133 @@
     </div>
     <div class="swiper wkSocialSwiper" data-social>
       <div class="swiper-wrapper">
+
         <div class="swiper-slide">
           <div class="wk-phone">
             <span class="wk-phone__notch"></span>
-            <div
-              class="wk-phone__screen wk-ph"
-              data-label="Reel 1 · 1080 x 1920"
-            ></div>
-            <span class="wk-phone__type">Reel</span>
+            <div class="wk-phone__screen">
+              <video
+                class="wk-phone__video"
+                muted
+                loop
+                playsinline
+                preload="none"
+                aria-label="DRAS reel"
+                data-reel="/wp-content/uploads/2026/11/DrasReel1.mp4"
+              ></video>
+            </div>
+            <a class="wk-phone__type" href="https://www.instagram.com/reel/DdrBP1RMrtV/" target="_blank" rel="noopener" aria-label="View DRAS reel on Instagram">View More</a>
           </div>
         </div>
+
         <div class="swiper-slide">
           <div class="wk-phone">
             <span class="wk-phone__notch"></span>
-            <div class="wk-phone__screen wk-ph" data-label="Carousel 1"></div>
-            <span class="wk-phone__type">Carousel</span>
+            <div class="wk-phone__screen">
+              <video
+                class="wk-phone__video"
+                muted
+                loop
+                playsinline
+                preload="none"
+                aria-label="Ekum Homes reel"
+                data-reel="/wp-content/uploads/2026/11/EkumHomesreel.mp4"
+              ></video>
+            </div>
+            <a class="wk-phone__type" href="https://www.instagram.com/reel/Dd8_fLiuQwF/" target="_blank" rel="noopener" aria-label="View Ekum Homes reel on Instagram">View More</a>
           </div>
         </div>
+
         <div class="swiper-slide">
           <div class="wk-phone">
             <span class="wk-phone__notch"></span>
-            <div
-              class="wk-phone__screen wk-ph"
-              data-label="Reel 2 · 1080 x 1920"
-            ></div>
-            <span class="wk-phone__type">Reel</span>
+            <div class="wk-phone__screen">
+              <video
+                class="wk-phone__video"
+                muted
+                loop
+                playsinline
+                preload="none"
+                aria-label="DRAS reel"
+                data-reel="/wp-content/uploads/2026/11/DrasReel4.mp4"
+              ></video>
+            </div>
+            <a class="wk-phone__type" href="https://www.instagram.com/reel/DfUla44s9Pg/" target="_blank" rel="noopener" aria-label="View DRAS reel on Instagram">View More</a>
           </div>
         </div>
+
         <div class="swiper-slide">
           <div class="wk-phone">
             <span class="wk-phone__notch"></span>
-            <div class="wk-phone__screen wk-ph" data-label="Post 1"></div>
-            <span class="wk-phone__type">Post</span>
+            <div class="wk-phone__screen">
+              <video
+                class="wk-phone__video"
+                muted
+                loop
+                playsinline
+                preload="none"
+                aria-label="Digitalise Me reel"
+                data-reel="/wp-content/uploads/2026/11/DigitaliseMeReel.mp4"
+              ></video>
+            </div>
+            <a class="wk-phone__type" href="https://www.instagram.com/reel/DcOVY49iE_M/" target="_blank" rel="noopener" aria-label="View Digitalise Me reel on Instagram">View More</a>
           </div>
         </div>
+
         <div class="swiper-slide">
           <div class="wk-phone">
             <span class="wk-phone__notch"></span>
-            <div
-              class="wk-phone__screen wk-ph"
-              data-label="Reel 3 · 1080 x 1920"
-            ></div>
-            <span class="wk-phone__type">Reel</span>
+            <div class="wk-phone__screen">
+              <video
+                class="wk-phone__video"
+                muted
+                loop
+                playsinline
+                preload="none"
+                aria-label="DRAS reel"
+                data-reel="/wp-content/uploads/2026/11/DrasReel3.mp4"
+              ></video>
+            </div>
+            <a class="wk-phone__type" href="https://www.instagram.com/reel/DctRnXZs7Vl/" target="_blank" rel="noopener" aria-label="View DRAS reel on Instagram">View More</a>
           </div>
         </div>
+
         <div class="swiper-slide">
           <div class="wk-phone">
             <span class="wk-phone__notch"></span>
-            <div class="wk-phone__screen wk-ph" data-label="Carousel 2"></div>
-            <span class="wk-phone__type">Carousel</span>
+            <div class="wk-phone__screen">
+              <video
+                class="wk-phone__video"
+                muted
+                loop
+                playsinline
+                preload="none"
+                aria-label="Digitalise Me reel"
+                data-reel="/wp-content/uploads/2026/11/DigitaliseMeReel2.mp4"
+              ></video>
+            </div>
+            <a class="wk-phone__type" href="https://www.instagram.com/reel/Dd31hCACU0f/" target="_blank" rel="noopener" aria-label="View Digitalise Me reel on Instagram">View More</a>
           </div>
         </div>
+
         <div class="swiper-slide">
           <div class="wk-phone">
             <span class="wk-phone__notch"></span>
-            <div
-              class="wk-phone__screen wk-ph"
-              data-label="Reel 4 · 1080 x 1920"
-            ></div>
-            <span class="wk-phone__type">Reel</span>
+            <div class="wk-phone__screen">
+              <video
+                class="wk-phone__video"
+                muted
+                loop
+                playsinline
+                preload="none"
+                aria-label="DRAS reel"
+                data-reel="/wp-content/uploads/2026/11/DrasReel2.mp4"
+              ></video>
+            </div>
+            <a class="wk-phone__type" href="https://www.instagram.com/reel/DbGUSxAMV6o/" target="_blank" rel="noopener" aria-label="View DRAS reel on Instagram">View More</a>
           </div>
         </div>
-        <div class="swiper-slide">
-          <div class="wk-phone">
-            <span class="wk-phone__notch"></span>
-            <div class="wk-phone__screen wk-ph" data-label="Post 2"></div>
-            <span class="wk-phone__type">Post</span>
-          </div>
-        </div>
+
       </div>
     </div>
   </section>
@@ -309,13 +385,14 @@
         </p>
       </div>
       <div class="wk-sites__list">
+
         <article class="wk-site" data-site>
           <div class="wk-site__devices">
             <div class="wk-laptop">
               <div class="wk-laptop__screen">
                 <div class="wk-scroll-shot wk-scroll-shot--img">
                   <img
-                    src="/wp-content/uploads/2026/11/Screenshot_2-11-2026_18355_yourvro.com_-scaled.jpeg"
+                    src="/wp-content/uploads/2026/11/vro-desk.jpeg"
                     alt="VRO website desktop design"
                     loading="lazy"
                   />
@@ -326,7 +403,7 @@
               <div class="wk-mobile__screen">
                 <div class="wk-scroll-shot wk-scroll-shot--img">
                   <img
-                    src="/wp-content/uploads/2026/11/Screenshot_2-11-2026_184126_yourvro.com_-scaled.jpeg"
+                    src="/wp-content/uploads/2026/11/vro-mob.jpeg"
                     alt="VRO website mobile design"
                     loading="lazy"
                   />
@@ -338,111 +415,207 @@
             <span class="wk-site__num">01</span>
             <h3 class="wk-site__name">VRO</h3>
             <p class="wk-site__desc">
-              One line about the brand and what the website achieved.
+              A men’s shopping platform for fashion, grooming and health, built to help men decide with confidence, not just browse.
             </p>
             <div class="wk-site__tags">
               <span class="wk-tag">Shopify</span
-              ><span class="wk-tag">UX/UI Design</span
-              ><span class="wk-tag">D2C</span>
+                ><span class="wk-tag">UX/UI Design</span
+                ><span class="wk-tag">D2C</span>
             </div>
             <a
               class="secondary-btn"
-              href="https://yourvro.com"
+              href="https://yourvro.com/"
               target="_blank"
               rel="noopener"
               >Visit Website</a
             >
           </div>
         </article>
+
         <article class="wk-site" data-site>
           <div class="wk-site__devices">
             <div class="wk-laptop">
               <div class="wk-laptop__screen">
-                <div
-                  class="wk-scroll-shot wk-ph"
-                  data-label="Full-page screenshot · 1440 x 4000"
-                ></div>
+                <div class="wk-scroll-shot wk-scroll-shot--img">
+                  <img
+                    src="/wp-content/uploads/2026/11/house-of-serene-desk.jpeg"
+                    alt="House of Serene website desktop design"
+                    loading="lazy"
+                  />
+                </div>
               </div>
             </div>
             <div class="wk-mobile">
               <div class="wk-mobile__screen">
-                <div class="wk-scroll-shot wk-ph" data-label="Mobile"></div>
+                <div class="wk-scroll-shot wk-scroll-shot--img">
+                  <img
+                    src="/wp-content/uploads/2026/11/house-of-serene-mob.jpeg"
+                    alt="House of Serene website mobile design"
+                    loading="lazy"
+                  />
+                </div>
               </div>
             </div>
           </div>
           <div class="wk-site__info">
             <span class="wk-site__num">02</span>
-            <h3 class="wk-site__name">
-              Website name <span class="wk-note">· add</span>
-            </h3>
+            <h3 class="wk-site__name">House of Serene</h3>
             <p class="wk-site__desc">
-              One line about the brand and what the website achieved.
+              A luxury home decor store from Dubai, designed to showcase handmade rugs, tables and accessories with a calm, premium shopping experience.
             </p>
             <div class="wk-site__tags">
-              <span class="wk-tag">WordPress</span
-              ><span class="wk-tag">Development</span
-              ><span class="wk-tag">Real Estate</span>
+              <span class="wk-tag">Shopify</span
+                ><span class="wk-tag">E-commerce</span
+                ><span class="wk-tag">Home Decor</span>
             </div>
-            <a class="secondary-btn" href="#" target="_blank" rel="noopener"
+            <a
+              class="secondary-btn"
+              href="https://houseofserene.com/"
+              target="_blank"
+              rel="noopener"
               >Visit Website</a
             >
           </div>
         </article>
-      </div>
-    </div>
-  </section>
 
-  <!-- ===== 7. AD CREATIVES ===== -->
-  <section class="wk-sec" aria-labelledby="ads-title">
-    <div class="page-width-medium">
-      <div class="wk-center" data-reveal>
-        <p class="eyebrow">Ad Creatives</p>
-        <h2 class="wk-h2" id="ads-title">Ads That <span>Converted</span></h2>
-        <p class="wk-lead">
-          Meta and Google ad creatives built around ROAS, not impressions.
-        </p>
-      </div>
-      <div class="wk-ads__grid">
-        <div class="wk-ad wk-ad--tall" data-ad>
-          <div class="wk-ph" data-label="Ad 4:5"></div>
-          <span class="wk-ad__platform">Meta</span
-          ><span class="wk-ad__result"><i></i>Result · add</span>
-        </div>
-        <div class="wk-ad wk-ad--sq" data-ad>
-          <div class="wk-ph" data-label="Ad 1:1"></div>
-          <span class="wk-ad__platform">Google</span
-          ><span class="wk-ad__result"><i></i>Result · add</span>
-        </div>
-        <div class="wk-ad wk-ad--story" data-ad>
-          <div class="wk-ph" data-label="Story 9:16"></div>
-          <span class="wk-ad__platform">Meta</span
-          ><span class="wk-ad__result"><i></i>Result · add</span>
-        </div>
-        <div class="wk-ad wk-ad--sq" data-ad>
-          <div class="wk-ph" data-label="Ad 1:1"></div>
-          <span class="wk-ad__platform">Meta</span
-          ><span class="wk-ad__result"><i></i>Result · add</span>
-        </div>
-        <div class="wk-ad wk-ad--tall" data-ad>
-          <div class="wk-ph" data-label="Ad 4:5"></div>
-          <span class="wk-ad__platform">Meta</span
-          ><span class="wk-ad__result"><i></i>Result · add</span>
-        </div>
-        <div class="wk-ad wk-ad--sq" data-ad>
-          <div class="wk-ph" data-label="Ad 1:1"></div>
-          <span class="wk-ad__platform">Google</span
-          ><span class="wk-ad__result"><i></i>Result · add</span>
-        </div>
-        <div class="wk-ad wk-ad--story" data-ad>
-          <div class="wk-ph" data-label="Story 9:16"></div>
-          <span class="wk-ad__platform">Meta</span
-          ><span class="wk-ad__result"><i></i>Result · add</span>
-        </div>
-        <div class="wk-ad wk-ad--tall" data-ad>
-          <div class="wk-ph" data-label="Ad 4:5"></div>
-          <span class="wk-ad__platform">Meta</span
-          ><span class="wk-ad__result"><i></i>Result · add</span>
-        </div>
+        <article class="wk-site" data-site>
+          <div class="wk-site__devices">
+            <div class="wk-laptop">
+              <div class="wk-laptop__screen">
+                <div class="wk-scroll-shot wk-scroll-shot--img">
+                  <img
+                    src="/wp-content/uploads/2026/11/dras-desk.jpeg"
+                    alt="DRAS website desktop design"
+                    loading="lazy"
+                  />
+                </div>
+              </div>
+            </div>
+            <div class="wk-mobile">
+              <div class="wk-mobile__screen">
+                <div class="wk-scroll-shot wk-scroll-shot--img">
+                  <img
+                    src="/wp-content/uploads/2026/11/dras-mob.jpeg"
+                    alt="DRAS website mobile design"
+                    loading="lazy"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="wk-site__info">
+            <span class="wk-site__num">03</span>
+            <h3 class="wk-site__name">DRAS</h3>
+            <p class="wk-site__desc">
+              A fresh, clean brand website for DRAS ICE, presenting its pan-India range of ice products in a simple, easy-to-browse way.
+            </p>
+            <div class="wk-site__tags">
+              <span class="wk-tag">Wix</span
+                ><span class="wk-tag">Website Design</span
+                ><span class="wk-tag">FMCG</span>
+            </div>
+            <a
+              class="secondary-btn"
+              href="https://dras.co.in/"
+              target="_blank"
+              rel="noopener"
+              >Visit Website</a
+            >
+          </div>
+        </article>
+
+        <article class="wk-site" data-site>
+          <div class="wk-site__devices">
+            <div class="wk-laptop">
+              <div class="wk-laptop__screen">
+                <div class="wk-scroll-shot wk-scroll-shot--img">
+                  <img
+                    src="/wp-content/uploads/2026/11/meesoyum-desk.jpeg"
+                    alt="Mesooyum website desktop design"
+                    loading="lazy"
+                  />
+                </div>
+              </div>
+            </div>
+            <div class="wk-mobile">
+              <div class="wk-mobile__screen">
+                <div class="wk-scroll-shot wk-scroll-shot--img">
+                  <img
+                    src="/wp-content/uploads/2026/11/meesoyum-mob.jpeg"
+                    alt="Mesooyum website mobile design"
+                    loading="lazy"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="wk-site__info">
+            <span class="wk-site__num">04</span>
+            <h3 class="wk-site__name">Mesooyum</h3>
+            <p class="wk-site__desc">
+              An online store for Asian-style sauces, chilli oils and chilli crisps, built to make bundles and gift boxes easy to shop.
+            </p>
+            <div class="wk-site__tags">
+              <span class="wk-tag">Shopify</span
+                ><span class="wk-tag">E-commerce</span
+                ><span class="wk-tag">D2C</span>
+            </div>
+            <a
+              class="secondary-btn"
+              href="https://mesooyum.com/"
+              target="_blank"
+              rel="noopener"
+              >Visit Website</a
+            >
+          </div>
+        </article>
+
+        <article class="wk-site" data-site>
+          <div class="wk-site__devices">
+            <div class="wk-laptop">
+              <div class="wk-laptop__screen">
+                <div class="wk-scroll-shot wk-scroll-shot--img">
+                  <img
+                    src="/wp-content/uploads/2026/11/loughton-desk.jpeg"
+                    alt="Loughton Private GP website desktop design"
+                    loading="lazy"
+                  />
+                </div>
+              </div>
+            </div>
+            <div class="wk-mobile">
+              <div class="wk-mobile__screen">
+                <div class="wk-scroll-shot wk-scroll-shot--img">
+                  <img
+                    src="/wp-content/uploads/2026/11/loughton-mob.jpeg"
+                    alt="Loughton Private GP website mobile design"
+                    loading="lazy"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="wk-site__info">
+            <span class="wk-site__num">05</span>
+            <h3 class="wk-site__name">Loughton Private GP</h3>
+            <p class="wk-site__desc">
+              A warm, trustworthy website for a private GP clinic on Loughton High Road, where personalised care meets modern general practice.
+            </p>
+            <div class="wk-site__tags">
+              <span class="wk-tag">Website Design</span
+                ><span class="wk-tag">UX/UI Design</span
+                ><span class="wk-tag">Healthcare</span>
+            </div>
+            <a
+              class="secondary-btn"
+              href="https://loughtonprivategp.co.uk/"
+              target="_blank"
+              rel="noopener"
+              >Visit Website</a
+            >
+          </div>
+        </article>
+
       </div>
     </div>
   </section>

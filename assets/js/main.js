@@ -1204,6 +1204,7 @@
 				breakpoints: { 0: { spaceBetween: 14 }, 768: { spaceBetween: 24 } }
 			});
 		}
+		initReels(page);
 
 		var filters = page.querySelectorAll('[data-filter]');
 		var cases = page.querySelectorAll('[data-cases] .wk-case');
@@ -1263,7 +1264,6 @@
 				.from(site.querySelectorAll('.wk-site__info > *'), { y: 30, autoAlpha: 0, duration: 0.6, stagger: 0.08, ease: 'power3.out' }, 0.3);
 			gsap.to(site.querySelector('.wk-mobile'), { y: -40, ease: 'none', scrollTrigger: { trigger: site, start: 'top bottom', end: 'bottom top', scrub: true } });
 		});
-		gsap.from(page.querySelectorAll('[data-ad]'), { y: 80, autoAlpha: 0, duration: 0.8, stagger: { each: 0.08, from: 'random' }, ease: 'power3.out', scrollTrigger: { trigger: page.querySelector('.wk-ads__grid'), start: 'top 95%', once: true } });
 		gsap.from(page.querySelectorAll('[data-ind]'), { y: 50, autoAlpha: 0, rotateX: -30, transformOrigin: 'top center', duration: 0.8, stagger: 0.07, ease: 'power3.out', scrollTrigger: { trigger: page.querySelector('.wk-ind__grid'), start: 'top 95%', once: true } });
 	}
 
@@ -1325,12 +1325,173 @@
 		}
 	}
 
+	function initReels(scope) {
+		var videos = scope.querySelectorAll('video[data-reel]');
+		if (!videos.length) {
+			return;
+		}
+		function load(v) {
+			if (!v.getAttribute('src')) {
+				v.src = v.getAttribute('data-reel') + '#t=0.1';
+				v.preload = 'metadata';
+			}
+		}
+		if (!('IntersectionObserver' in window)) {
+			videos.forEach(load);
+			return;
+		}
+		var io = new IntersectionObserver(function (entries) {
+			entries.forEach(function (e) {
+				var v = e.target;
+				if (e.isIntersecting) {
+					load(v);
+					if (!reduceMotion) {
+						var p = v.play();
+						if (p && p.catch) {
+							p.catch(function () {});
+						}
+					}
+				} else if (!v.paused) {
+					v.pause();
+				}
+			});
+		}, { rootMargin: '200px 0px', threshold: 0.2 });
+		videos.forEach(function (v) {
+			io.observe(v);
+		});
+	}
+
+	function initGridWarp() {
+		var canvas = document.querySelector('[data-grid-warp]');
+		if (!canvas || !canvas.getContext) {
+			return;
+		}
+		var hero = canvas.parentElement;
+		var ctx = canvas.getContext('2d');
+		var gap = 32;
+		var radius = 190;
+		var push = 26;
+		var w = 0;
+		var h = 0;
+		var mouse = { x: -9999, y: -9999 };
+		var pos = { x: -9999, y: -9999 };
+		var strength = 0;
+		var target = 0;
+		var raf = 0;
+
+		function resize() {
+			var dpr = Math.min(window.devicePixelRatio || 1, 2);
+			w = hero.clientWidth;
+			h = hero.clientHeight;
+			canvas.width = w * dpr;
+			canvas.height = h * dpr;
+			ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+			draw();
+		}
+
+		function point(x, y) {
+			var dx = x - pos.x;
+			var dy = y - pos.y;
+			var d = Math.sqrt(dx * dx + dy * dy);
+			var f = d < radius ? (1 - d / radius) * strength : 0;
+			var k = d > 0 ? (f * f * push) / d : 0;
+			return { x: x + dx * k, y: y + dy * k, f: f };
+		}
+
+		function draw() {
+			ctx.clearRect(0, 0, w, h);
+			var cols = Math.ceil(w / gap) + 1;
+			var rows = Math.ceil(h / gap) + 1;
+			var ox = (w - (cols - 1) * gap) / 2;
+			var oy = (h - (rows - 1) * gap) / 2;
+			var grid = [];
+			var r;
+			var c;
+			for (r = 0; r < rows; r++) {
+				grid[r] = [];
+				for (c = 0; c < cols; c++) {
+					grid[r][c] = point(ox + c * gap, oy + r * gap);
+				}
+			}
+			ctx.lineWidth = 1;
+			ctx.strokeStyle = 'rgba(15, 51, 156, 0.07)';
+			ctx.beginPath();
+			for (r = 0; r < rows; r++) {
+				for (c = 0; c < cols; c++) {
+					var p = grid[r][c];
+					if (c === 0) { ctx.moveTo(p.x, p.y); } else { ctx.lineTo(p.x, p.y); }
+				}
+			}
+			for (c = 0; c < cols; c++) {
+				for (r = 0; r < rows; r++) {
+					var q = grid[r][c];
+					if (r === 0) { ctx.moveTo(q.x, q.y); } else { ctx.lineTo(q.x, q.y); }
+				}
+			}
+			ctx.stroke();
+			for (r = 0; r < rows; r++) {
+				for (c = 0; c < cols; c++) {
+					var d = grid[r][c];
+					ctx.fillStyle = 'rgba(15, 51, 156, ' + (0.14 + d.f * 0.6) + ')';
+					ctx.beginPath();
+					ctx.arc(d.x, d.y, 1 + d.f * 2.4, 0, Math.PI * 2);
+					ctx.fill();
+				}
+			}
+			if (strength > 0.05) {
+				ctx.fillStyle = 'rgba(249, 120, 53, ' + strength + ')';
+				ctx.beginPath();
+				ctx.arc(pos.x, pos.y, 5, 0, Math.PI * 2);
+				ctx.fill();
+			}
+		}
+
+		function tick() {
+			pos.x += (mouse.x - pos.x) * 0.18;
+			pos.y += (mouse.y - pos.y) * 0.18;
+			strength += (target - strength) * 0.12;
+			draw();
+			var moving = Math.abs(mouse.x - pos.x) > 0.3 || Math.abs(mouse.y - pos.y) > 0.3 || Math.abs(target - strength) > 0.01;
+			raf = moving ? requestAnimationFrame(tick) : 0;
+		}
+
+		function start() {
+			if (!raf) {
+				raf = requestAnimationFrame(tick);
+			}
+		}
+
+		resize();
+		window.addEventListener('resize', resize);
+
+		if (reduceMotion || !window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
+			return;
+		}
+
+		hero.addEventListener('mousemove', function (e) {
+			var rect = hero.getBoundingClientRect();
+			mouse.x = e.clientX - rect.left;
+			mouse.y = e.clientY - rect.top;
+			if (target === 0) {
+				pos.x = mouse.x;
+				pos.y = mouse.y;
+			}
+			target = 1;
+			start();
+		});
+		hero.addEventListener('mouseleave', function () {
+			target = 0;
+			start();
+		});
+	}
+
 	document.addEventListener('DOMContentLoaded', function () {
 		if (gsap && ScrollTrigger) {
 			gsap.registerPlugin(ScrollTrigger);
 		}
 
 		initHeader();
+		initGridWarp();
 		initAbout();
 		initPlatforms();
 		initAccordions();

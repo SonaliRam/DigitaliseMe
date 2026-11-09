@@ -210,3 +210,5 @@ function dm_contact_url() {
 	$page = get_page_by_path( 'contact-us' );
 	return $page ? get_permalink( $page ) : home_url( '/contact-us/' );
 }
+
+add_filter( 'big_image_size_threshold', '__return_false' );
