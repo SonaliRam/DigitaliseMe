@@ -675,6 +675,14 @@ a.wk-phone__type:focus-visible {
   justify-content: center;
   background: var(--orange);
 }
+a.wk-ind--cta {
+  text-decoration: none;
+  cursor: pointer;
+}
+a.wk-ind--cta:focus-visible {
+  outline: 3px solid var(--blue);
+  outline-offset: 3px;
+}
 .wk-ind--cta::before {
   background: var(--blue);
 }
@@ -817,6 +825,9 @@ a.wk-phone__type:focus-visible {
   }
   .wk-r-tile--a .wk-r-tile__num {
     font-size: 64px;
+  }
+  .wk-r-tile--d .wk-r-tile__num {
+    font-size: 30px;
   }
   .wk-r-tile__label {
     font-size: 13px;

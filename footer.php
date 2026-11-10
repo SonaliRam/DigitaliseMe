@@ -3,7 +3,11 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-$dm_industries = array( 'D2C Brands', 'E-commerce', 'Real Estate', 'Healthcare', 'Lifestyle', 'Hospitality', 'Professional Services' );
+$dm_social_urls = array(
+	'instagram' => 'https://www.instagram.com/digitalise_me/',
+	'linkedin'  => 'https://www.linkedin.com/company/digitaliseme/',
+	'facebook'  => 'https://www.facebook.com/100064023399046/',
+);
 ?>
 <footer class="site-footer on-dark">
 	<div class="page-width-medium">
@@ -16,7 +20,7 @@ $dm_industries = array( 'D2C Brands', 'E-commerce', 'Real Estate', 'Healthcare',
 				<ul class="footer__social">
 					<?php foreach ( dm_social_networks() as $dm_id => $dm_network ) : ?>
 						<li>
-							<a href="<?php echo esc_url( get_theme_mod( 'dm_social_' . $dm_id, '#' ) ); ?>" aria-label="<?php echo esc_attr( $dm_network['label'] ); ?>" target="_blank" rel="noopener">
+							<a href="<?php echo esc_url( isset( $dm_social_urls[ $dm_id ] ) ? $dm_social_urls[ $dm_id ] : '#' ); ?>" aria-label="<?php echo esc_attr( $dm_network['label'] ); ?>" target="_blank" rel="noopener">
 								<?php echo $dm_network['icon']; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
 							</a>
 						</li>
@@ -32,15 +36,6 @@ $dm_industries = array( 'D2C Brands', 'E-commerce', 'Real Estate', 'Healthcare',
 			<div class="footer__col" data-footer-acc>
 				<h6><button class="footer__toggle" type="button" aria-expanded="false"><?php esc_html_e( 'Company', 'digitaliseme' ); ?></button></h6>
 				<?php dm_menu( 'footer-company', 'footer__list' ); ?>
-			</div>
-
-			<div class="footer__col" data-footer-acc>
-				<h6><button class="footer__toggle" type="button" aria-expanded="false"><?php esc_html_e( 'Industries', 'digitaliseme' ); ?></button></h6>
-				<ul class="footer__list">
-					<?php foreach ( $dm_industries as $dm_industry ) : ?>
-						<li><?php echo esc_html( $dm_industry ); ?></li>
-					<?php endforeach; ?>
-				</ul>
 			</div>
 		</div>
 

@@ -1343,7 +1343,7 @@
 				return;
 			}
 			var o = { v: 0 };
-			gsap.to(o, { v: end, duration: 2, ease: 'power2.out', scrollTrigger: { trigger: el, start: 'top 95%', once: true }, onUpdate: function () { el.textContent = Math.round(o.v); } });
+			gsap.to(o, { v: end, duration: 2, ease: 'power2.out', scrollTrigger: { trigger: el, start: 'top 95%', once: true }, onUpdate: function () { el.textContent = Math.round(o.v).toLocaleString('en-US'); } });
 		});
 		gsap.from(cases, { y: 60, autoAlpha: 0, duration: 0.8, stagger: 0.1, ease: 'power3.out', scrollTrigger: { trigger: page.querySelector('[data-cases]'), start: 'top 95%', once: true } });
 		gsap.from(page.querySelectorAll('[data-social] .wk-phone'), { y: 60, rotate: 4, autoAlpha: 0, duration: 0.6, stagger: 0.05, ease: 'power3.out', scrollTrigger: { trigger: page.querySelector('[data-social]'), start: 'top 95%', once: true } });

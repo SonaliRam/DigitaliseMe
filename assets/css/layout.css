@@ -277,7 +277,7 @@
 
 .footer__top {
   display: grid;
-  grid-template-columns: 1.4fr 1fr 1fr 1fr;
+  grid-template-columns: 1.4fr 1fr 1fr;
   gap: 48px;
 }
 
@@ -390,7 +390,7 @@
     display: flex;
   }
   .footer__top {
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr;
   }
   .footer__brand {
     grid-column: 1 / -1;
