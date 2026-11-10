@@ -590,7 +590,6 @@
 		});
 	}
 
-	/* About Us: Our Mission image loops */
 	function createLoop(track, getSlots, interval) {
 	  var items = Array.prototype.slice.call(track.children);
 	  var order = items.map(function (el, i) { return i; });
@@ -900,7 +899,7 @@
 		if (!section) {
 			return;
 		}
-		var form = section.querySelector('[data-ef-form]');
+		var form = section.querySelector('[data-ef-form]') || section.querySelector('form.ef__form');
 		var thanks = section.querySelector('[data-ef-thanks]');
 		var panel = section.querySelector('[data-ef-panel]');
 		var copy = section.querySelector('[data-ef-copy]');
@@ -977,8 +976,9 @@
 				}
 			});
 		});
-		form.addEventListener('submit', function (e) {
-			e.preventDefault();
+		var isCf7 = form.classList.contains('wpcf7-form');
+		var box = isCf7 ? (form.closest('.wpcf7') || form) : form;
+		function validateAll() {
 			var ok = true;
 			inputs.forEach(function (input) {
 				if (!check(input) && ok) {
@@ -986,21 +986,37 @@
 					ok = false;
 				}
 			});
-			if (!ok) {
-				return;
-			}
-			var left = form.parentNode;
+			return ok;
+		}
+		function showThanks() {
+			var left = box.parentNode;
 			left.style.minHeight = left.offsetHeight + 'px';
-			function showThanks() {
-				form.hidden = true;
+			function swap() {
+				box.hidden = true;
 				thanks.hidden = false;
 				if (gsap && !reduceMotion) {
 					gsap.from(thanks.children, { y: 30, autoAlpha: 0, duration: 0.7, stagger: 0.12, ease: 'back.out(1.6)' });
 				}
 			}
 			if (gsap && !reduceMotion) {
-				gsap.to(form, { y: -20, autoAlpha: 0, duration: 0.4, ease: 'power2.in', onComplete: showThanks });
+				gsap.to(box, { y: -20, autoAlpha: 0, duration: 0.4, ease: 'power2.in', onComplete: swap });
 			} else {
+				swap();
+			}
+		}
+		if (isCf7) {
+			section.addEventListener('submit', function (e) {
+				if (e.target === form && !validateAll()) {
+					e.preventDefault();
+					e.stopPropagation();
+				}
+			}, true);
+			box.addEventListener('wpcf7mailsent', showThanks);
+			return;
+		}
+		form.addEventListener('submit', function (e) {
+			e.preventDefault();
+			if (validateAll()) {
 				showThanks();
 			}
 		});

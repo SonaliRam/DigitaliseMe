@@ -1,4 +1,3 @@
-/* ---------- Legal pages (Privacy Policy, Terms) ---------- */
 .lg { padding-top: 64px; padding-bottom: var(--section-gap); font-family: var(--font-body); }
 .lg h1 { margin: 0; font-family: var(--font-heading); font-size: 48px; font-weight: 600; line-height: 1.1; letter-spacing: -0.02em; color: #0F339C; }
 .lg__date { margin: 12px 0 48px; font-size: 14px; color: #4A5578; }

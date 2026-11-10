@@ -21,7 +21,7 @@ $dm_social_urls = array(
 					<?php foreach ( dm_social_networks() as $dm_id => $dm_network ) : ?>
 						<li>
 							<a href="<?php echo esc_url( isset( $dm_social_urls[ $dm_id ] ) ? $dm_social_urls[ $dm_id ] : '#' ); ?>" aria-label="<?php echo esc_attr( $dm_network['label'] ); ?>" target="_blank" rel="noopener">
-								<?php echo $dm_network['icon']; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
+								<?php echo $dm_network['icon']; ?>
 							</a>
 						</li>
 					<?php endforeach; ?>

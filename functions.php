@@ -70,6 +70,10 @@ function dm_enqueue_assets() {
 		wp_enqueue_script( 'swiper', $uri . '/assets/js/vendor/swiper-bundle.min.js', array(), '14.0.1', array( 'in_footer' => true, 'strategy' => 'defer' ) );
 	}
 
+	if ( $dm_post && has_shortcode( $dm_post->post_content, 'contact-form-7' ) && function_exists( 'wpcf7_enqueue_scripts' ) ) {
+		wpcf7_enqueue_scripts();
+	}
+
 	wp_enqueue_script(
 		'dm-main',
 		$uri . '/assets/js/main.js',
@@ -104,9 +108,7 @@ function dm_customize_register( $wp_customize ) {
 	);
 
 	$images = array(
-		'dm_logo_header'   => __( 'Header logo (360 x 96 px)', 'digitaliseme' ),
-		'dm_logo_footer'   => __( 'Footer logo (240 x 72 px)', 'digitaliseme' ),
-		'dm_logo_wordmark' => __( 'Footer wordmark logo (1600 x 240 px)', 'digitaliseme' ),
+		'dm_logo_header' => __( 'Header logo (360 x 96 px)', 'digitaliseme' ),
 	);
 
 	foreach ( $images as $id => $label ) {
@@ -119,35 +121,6 @@ function dm_customize_register( $wp_customize ) {
 					'label'   => $label,
 					'section' => 'dm_theme_options',
 				)
-			)
-		);
-	}
-
-	$wp_customize->add_setting(
-		'dm_footer_tagline',
-		array(
-			'default'           => __( 'Marketing Tied to Revenue, Not Just Reach.', 'digitaliseme' ),
-			'sanitize_callback' => 'sanitize_text_field',
-		)
-	);
-	$wp_customize->add_control(
-		'dm_footer_tagline',
-		array(
-			'label'   => __( 'Footer tagline', 'digitaliseme' ),
-			'section' => 'dm_theme_options',
-			'type'    => 'text',
-		)
-	);
-
-	foreach ( dm_social_networks() as $id => $network ) {
-		$wp_customize->add_setting( 'dm_social_' . $id, array( 'sanitize_callback' => 'esc_url_raw' ) );
-		$wp_customize->add_control(
-			'dm_social_' . $id,
-			array(
-				// translators: %s: social network name.
-				'label'   => sprintf( __( '%s URL', 'digitaliseme' ), $network['label'] ),
-				'section' => 'dm_theme_options',
-				'type'    => 'url',
 			)
 		);
 	}
@@ -212,3 +185,6 @@ function dm_contact_url() {
 }
 
 add_filter( 'big_image_size_threshold', '__return_false' );
+add_filter( 'wpcf7_load_js', '__return_false' );
+add_filter( 'wpcf7_load_css', '__return_false' );
+add_filter( 'wpcf7_autop_or_not', '__return_false' );

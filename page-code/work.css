@@ -1,4 +1,3 @@
-/* ---------- Our Work page ---------- */
 .wk {
   --blue: #0f339c;
   --pastel: #84b0fb;
@@ -88,7 +87,6 @@
   margin-top: var(--gap);
 }
 
-/* ---------- 1. Hero ---------- */
 .wk-hero {
   margin-top: calc((var(--header-h) + 24px) * -1);
   display: flex;
@@ -156,7 +154,6 @@
   margin-top: 36px;
 }
 
-/* ---------- 2. Results wall ---------- */
 .wk-results__grid {
   display: grid;
   grid-template-columns: repeat(6, 1fr);
@@ -246,7 +243,6 @@
   border-radius: 999px;
 }
 
-/* ---------- 4. Case studies grid ---------- */
 .wk-cases__head {
   display: flex;
   align-items: flex-end;
@@ -379,7 +375,6 @@
   text-align: center;
 }
 
-/* ---------- 5. Social showcase (dark) ---------- */
 .wk-social {
   padding: 50px 0 120px;
   overflow: hidden;
@@ -490,7 +485,6 @@ a.wk-phone__type:focus-visible {
   margin-top: 24px !important;
 }
 
-/* ---------- 6. Websites ---------- */
 .wk-sites__list {
   display: grid;
   gap: 160px;
@@ -608,7 +602,6 @@ a.wk-phone__type:focus-visible {
   margin: 20px 0 28px;
 }
 
-/* ---------- 8. Industries ---------- */
 .wk-ind__grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -696,7 +689,6 @@ a.wk-ind--cta:focus-visible {
   color: rgba(255, 255, 255, 0.85);
 }
 
-/* ---------- 9. CTA ---------- */
 .wk-cta {
   display: flex;
   align-items: center;
@@ -748,7 +740,6 @@ a.wk-ind--cta:focus-visible {
   border-color: var(--orange);
 }
 
-/* ---------- Responsive ---------- */
 @media (max-width: 1024px) {
   .wk-hero__title {
     font-size: 68px;
@@ -914,7 +905,6 @@ a.wk-ind--cta:focus-visible {
   }
 }
 
-/* ---------- Full-width CTA (background image + dim overlay) ---------- */
 .cta {
   position: relative;
   display: flex;
@@ -986,7 +976,6 @@ a.wk-ind--cta:focus-visible {
   }
 }
 
-/* ---------- Brand strip (same as home page) ---------- */
 .brand-strip {
   padding: 48px 0;
   overflow: hidden;

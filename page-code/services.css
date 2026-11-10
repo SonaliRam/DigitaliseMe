@@ -1,4 +1,3 @@
-/* ---------- Services: glass navbar from page load ---------- */
 body:has(.sh) .site-header,
 body:has(.sh) .site-header.is-scrolled {
   background: rgba(255, 255, 255, 0.8);
@@ -8,7 +7,6 @@ body:has(.sh) .site-header.is-scrolled {
   backdrop-filter: var(--glass-blur);
 }
 
-/* ---------- Services: Hero ---------- */
 .sh {
   position: relative;
   display: flex;
@@ -221,7 +219,6 @@ body:has(.sh) .site-header.is-scrolled {
   }
 }
 
-/* ---------- Services: numbers (mobile only, below banner) ---------- */
 .ss {
   display: none;
 }
@@ -290,7 +287,6 @@ body:has(.sh) .site-header.is-scrolled {
   }
 }
 
-/* ---------- Services: cards slider (dark) ---------- */
 @property --sv-angle {
   syntax: "<angle>";
   inherits: false;
@@ -678,7 +674,6 @@ body:has(.sh) .site-header.is-scrolled {
   }
 }
 
-/* ---------- Services cards: updates ---------- */
 .sv__slider {
   height: 100vh;
   height: 100svh;
@@ -756,7 +751,6 @@ body:has(.sh) .site-header.is-scrolled {
   }
 }
 
-/* ---------- Platforms We Work With ---------- */
 .platforms__head {
   max-width: 640px;
   margin: 0 auto 48px;
@@ -885,7 +879,6 @@ body:has(.sh) .site-header.is-scrolled {
   background: var(--color-white);
 }
 
-/* Platforms: plain logos only (no box, border or background) */
 .platforms__logos .platforms__logo,
 .platforms__logos .platforms__logo:hover {
   flex: 0 0 35px;
@@ -961,7 +954,6 @@ body:has(.sh) .site-header.is-scrolled {
   }
 }
 
-/* ---------- Full-width CTA (background image + dim overlay) ---------- */
 .cta {
   position: relative;
   display: flex;
