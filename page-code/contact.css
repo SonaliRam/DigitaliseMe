@@ -936,9 +936,7 @@
     color 0.25s ease;
 }
 .ef-field__input:focus + .ef-field__label,
-.ef-field__input:not(:placeholder-shown) + .ef-field__label,
-.ef-field:focus-within .ef-field__label,
-.ef-field:has(.ef-field__input:not(:placeholder-shown)) .ef-field__label {
+.ef-field__input:not(:placeholder-shown) + .ef-field__label {
   transform: translateY(-20px) scale(0.78);
   color: #0f339c;
 }
@@ -979,38 +977,22 @@
   margin-top: 12px;
   border-radius: 999px;
 }
-.ef .wpcf7-form-control-wrap {
-  display: block;
-}
-.ef .wpcf7-not-valid-tip,
-.ef .wpcf7-spinner {
-  display: none;
-}
-.ef .screen-reader-response {
+.ef__hp {
   position: absolute;
+  left: -9999px;
   width: 1px;
   height: 1px;
-  margin: -1px;
-  padding: 0;
   overflow: hidden;
-  clip: rect(0, 0, 0, 0);
-  border: 0;
 }
-.ef .wpcf7-response-output {
-  margin: 16px 0 0;
+.ef__submit:disabled {
+  opacity: 0.6;
+  cursor: wait;
+}
+.ef__status {
+  margin: 14px 0 0;
   font-size: 14px;
   line-height: 1.5;
   color: #f97835;
-}
-.ef .wpcf7-response-output:empty {
-  display: none;
-}
-.ef form.sent .wpcf7-response-output {
-  display: none;
-}
-.ef form.submitting .ef__submit {
-  opacity: 0.6;
-  pointer-events: none;
 }
 .ef__thanks {
   width: 100%;

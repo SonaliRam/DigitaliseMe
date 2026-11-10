@@ -899,7 +899,7 @@
 		if (!section) {
 			return;
 		}
-		var form = section.querySelector('[data-ef-form]') || section.querySelector('form.ef__form');
+		var form = section.querySelector('[data-ef-form]');
 		var thanks = section.querySelector('[data-ef-thanks]');
 		var panel = section.querySelector('[data-ef-panel]');
 		var copy = section.querySelector('[data-ef-copy]');
@@ -976,9 +976,8 @@
 				}
 			});
 		});
-		var isCf7 = form.classList.contains('wpcf7-form');
-		var box = isCf7 ? (form.closest('.wpcf7') || form) : form;
-		function validateAll() {
+		form.addEventListener('submit', function (e) {
+			e.preventDefault();
 			var ok = true;
 			inputs.forEach(function (input) {
 				if (!check(input) && ok) {
@@ -986,40 +985,54 @@
 					ok = false;
 				}
 			});
-			return ok;
-		}
-		function showThanks() {
-			var left = box.parentNode;
+			if (!ok) {
+				return;
+			}
+			var endpoint = form.getAttribute('data-endpoint') || '';
+			var submitBtn = form.querySelector('.ef__submit');
+			var status = form.querySelector('[data-ef-status]');
+			var btnText = submitBtn ? submitBtn.textContent : '';
+			function fail(msg) {
+				if (submitBtn) {
+					submitBtn.disabled = false;
+					submitBtn.textContent = btnText;
+				}
+				if (status) {
+					status.textContent = msg || 'Sorry, your enquiry could not be sent. Please try again or email us directly.';
+					status.hidden = false;
+				}
+			}
+			if (!/^https:\/\/script\.google\.com\//.test(endpoint)) {
+				fail('The form is not connected yet. Please email us directly.');
+				return;
+			}
+			if (status) {
+				status.hidden = true;
+			}
+			if (submitBtn) {
+				submitBtn.disabled = true;
+			}
+			var body = new URLSearchParams(new FormData(form));
+			body.append('page', window.location.href);
+			fetch(endpoint, { method: 'POST', body: body, mode: 'no-cors', keepalive: true }).catch(function () {});
+			done();
+		});
+		function done() {
+			var left = form.parentNode;
 			left.style.minHeight = left.offsetHeight + 'px';
-			function swap() {
-				box.hidden = true;
+			function showThanks() {
+				form.hidden = true;
 				thanks.hidden = false;
 				if (gsap && !reduceMotion) {
 					gsap.from(thanks.children, { y: 30, autoAlpha: 0, duration: 0.7, stagger: 0.12, ease: 'back.out(1.6)' });
 				}
 			}
 			if (gsap && !reduceMotion) {
-				gsap.to(box, { y: -20, autoAlpha: 0, duration: 0.4, ease: 'power2.in', onComplete: swap });
+				gsap.to(form, { y: -20, autoAlpha: 0, duration: 0.4, ease: 'power2.in', onComplete: showThanks });
 			} else {
-				swap();
-			}
-		}
-		if (isCf7) {
-			section.addEventListener('submit', function (e) {
-				if (e.target === form && !validateAll()) {
-					e.preventDefault();
-					e.stopPropagation();
-				}
-			}, true);
-			box.addEventListener('wpcf7mailsent', showThanks);
-			return;
-		}
-		form.addEventListener('submit', function (e) {
-			e.preventDefault();
-			if (validateAll()) {
 				showThanks();
 			}
-		});
+		}
 	}
 
 	function initFaq() {

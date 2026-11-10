@@ -70,10 +70,6 @@ function dm_enqueue_assets() {
 		wp_enqueue_script( 'swiper', $uri . '/assets/js/vendor/swiper-bundle.min.js', array(), '14.0.1', array( 'in_footer' => true, 'strategy' => 'defer' ) );
 	}
 
-	if ( $dm_post && has_shortcode( $dm_post->post_content, 'contact-form-7' ) && function_exists( 'wpcf7_enqueue_scripts' ) ) {
-		wpcf7_enqueue_scripts();
-	}
-
 	wp_enqueue_script(
 		'dm-main',
 		$uri . '/assets/js/main.js',
@@ -185,6 +181,3 @@ function dm_contact_url() {
 }
 
 add_filter( 'big_image_size_threshold', '__return_false' );
-add_filter( 'wpcf7_load_js', '__return_false' );
-add_filter( 'wpcf7_load_css', '__return_false' );
-add_filter( 'wpcf7_autop_or_not', '__return_false' );
