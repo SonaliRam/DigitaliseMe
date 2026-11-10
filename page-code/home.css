@@ -358,7 +358,7 @@
   content: "";
   position: absolute;
   inset: 0;
-  background: rgba(15, 51, 156, 0.7);
+  background: rgba(0, 0, 0, 0.6);
 }
 
 .about-card__word {
@@ -375,6 +375,41 @@
   white-space: nowrap;
   color: #ffffff;
   transform: translate(-50%, -50%);
+}
+.about-card__content {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+  padding: 32px;
+  text-align: center;
+}
+.about-card__content .about-card__word {
+  position: static;
+  font-weight: 700;
+  transform: none;
+}
+.about-card__text {
+  display: block;
+  max-width: 340px;
+  font-family: var(--font-body);
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.6;
+  color: #ffffff;
+}
+@media (max-width: 767px) {
+  .about-card__content {
+    gap: 12px;
+    padding: 24px;
+  }
+  .about-card__text {
+    font-size: 15px;
+  }
 }
 
 .about-card.is-active .about-card__inner {
