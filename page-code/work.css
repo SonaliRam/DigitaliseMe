@@ -981,6 +981,12 @@ a.wk-ind--cta:focus-visible {
   overflow: hidden;
 }
 
+.brand-strip__viewport {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
 .brand-strip__track {
   display: flex;
   align-items: center;
@@ -989,11 +995,15 @@ a.wk-ind--cta:focus-visible {
   margin: 0;
   padding: 0;
   list-style: none;
-  animation: brand-strip-run 80s linear infinite;
+  animation: brand-strip-run 30s linear infinite;
 }
 
 .brand-strip:hover .brand-strip__track {
   animation-play-state: paused;
+}
+
+.brand-strip__track--reverse {
+  animation-name: brand-strip-run-reverse;
 }
 
 .brand-strip__item {
@@ -1003,7 +1013,7 @@ a.wk-ind--cta:focus-visible {
 .brand-strip__item img {
   display: block;
   width: auto;
-  height: 56px;
+  height: 70px;
   max-width: none;
   object-fit: contain;
   transition: transform 0.35s ease;
@@ -1022,12 +1032,21 @@ a.wk-ind--cta:focus-visible {
   }
 }
 
+@keyframes brand-strip-run-reverse {
+  from {
+    transform: translateX(-50%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
 @media (max-width: 1024px) {
   .brand-strip__track {
     gap: 48px;
   }
   .brand-strip__item img {
-    height: 48px;
+    height: 58px;
   }
 }
 
@@ -1037,10 +1056,13 @@ a.wk-ind--cta:focus-visible {
   }
   .brand-strip__track {
     gap: 32px;
-    animation-duration: 60s;
+    animation-duration: 24s;
+  }
+  .brand-strip__viewport {
+    gap: 20px;
   }
   .brand-strip__item img {
-    height: 36px;
+    height: 44px;
   }
 }
 
